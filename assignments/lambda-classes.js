@@ -22,7 +22,12 @@ class Instructor extends Person {
     demo(subject){
         return `Today we are learning about ${subject}`
     };
+    gradeStudent(student){
+         student.grade -= Math.floor(Math.random * 10)
+         return student.grade
+    };
     grade(student ,subject){
+        
         return `${student.name} receives a perfect score on ${subject}`
 
     };
@@ -30,11 +35,12 @@ class Instructor extends Person {
 }
 class Student extends Person{
     constructor(attributes){
-        let{previousBackground, className , favSubjects} = attributes;
+        let{previousBackground, className , favSubjects } = attributes;
         super(attributes)
         this.previousBackground = previousBackground;
         this.className = className;
         this.favSubjects = favSubjects; 
+        this.grade = 50;
     };
     listsSubjects(){
         this.favSubjects.forEach(subject => console.log(subject))
@@ -46,6 +52,15 @@ class Student extends Person{
     sprintChallenge(subject){
         console.log(`${this.name} has begun sprint challenge on ${subject}`)
     };
+    graduate(){
+        if(this.grade >=70) {
+            return 'Youre Good to Go. Lambda has high Hopes for you'
+        }
+        else{
+            Instructor.gradeStudent()
+
+        }
+    }
 }
 class ProjectManager extends Instructor{
     constructor(attributes){
@@ -142,3 +157,6 @@ console.log(firstInstructor.demo('javascript'))
 console.log(secondInstructor.grade(firstStudent,'javascript'))
 console.log(secondStudent.listsSubjects())
 console.log(secondStudent.PRAssignment('javascript'))
+console.log(firstPM.standUp('webeu-sorin'))
+console.log(secondPM.debugsCode(firstStudent,'encansuplation'))
+console.log(firstInstructor.gradeStudent(firstStudent))
