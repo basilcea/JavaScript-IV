@@ -23,7 +23,7 @@ class Instructor extends Person {
         return `Today we are learning about ${subject}`
     };
     gradeStudent(student){
-         student.grade -= Math.floor(Math.random * 10)
+         student.grade -= Math.floor(Math.random() * 10)
          return student.grade
     };
     grade(student ,subject){
